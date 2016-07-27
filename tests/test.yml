@@ -1,0 +1,5 @@
+---
+- name: Install NodeJS
+  hosts: all
+  roles:
+  - ansible-nodejs
