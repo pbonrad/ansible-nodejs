@@ -1,38 +1,41 @@
-Role Name
-=========
+# ansible-nodejs [![Build Status](https://travis-ci.org/pbonrad/ansible-nodejs.svg?branch=master)](https://travis-ci.org/pbonrad/ansible-nodejs)
 
-A brief description of the role goes here.
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
 
-Requirements
-------------
+More information about NodeJS can be found here:
+[https://nodejs.org](https://nodejs.org)
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role installs NodeJS on the target server using the `apt-get` package manager. It works for Ubuntu and Debian servers and was tested with the help of docker containers. In comparison to other Ansible role tests where Ansible runs inside the container and is connecting to localhost, I decided to use the [Ansible docker connection](http://docs.ansible.com/ansible/intro_inventory.html#non-ssh-connection-types) (`ansible_connection=docker`). The build which run at [Travis CI](https://travis-ci.org/pbonrad/ansible-nodejs) uses this functionality.
 
-Role Variables
---------------
+See also:
+* GitHub project with Dockerfiles:  [https://github.com/pbonrad/ansible-docker-base](https://github.com/pbonrad/ansible-docker-base)
+* Role on Ansible Galaxy:  [https://galaxy.ansible.com/pbonrad/nodejs/](https://galaxy.ansible.com/pbonrad/nodejs/)
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+    # versions available: 0.12 | 4.x | 5.x | 6.x
+    nodejs_version: "6.x"
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Dependencies
 
-Example Playbook
-----------------
+There are no dependencies to other roles. If you want to run the test, you need to install [Docker](https://www.docker.com/).
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
+An example playbook is included in the `test.yml` file. You can use `run.sh` for running a test locally, which starts a docker container as the target.
+
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+         - role: ansible-nodejs
 
-License
--------
+## Contributions and Feedback
 
-BSD
+Any contributions are welcome. For any bugs or feature requests, please open an issue through [Github](https://github.com/pbonrad/ansible-nodejs/issues).
 
-Author Information
-------------------
+## License
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
+
+## Author Information
+
+Peter Bonrad - [pbonrad](https://github.com/pbonrad) - 2016
